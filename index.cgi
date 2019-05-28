@@ -23,7 +23,7 @@ my $query = $file_arr[1];
 
 print $file;
 
-if ($file == "genres.html")
+if ($file eq "genres.html")
 {
     open my $fh, "< templates/genres.html";
     local $/ = undef;
@@ -32,7 +32,7 @@ if ($file == "genres.html")
     print $html;
 }
 
-if ($file == "bookinfo.html")
+if ($file eq "bookinfo.html")
 {
     open my $fh, "< templates/bookinfo.html";
     local $/ = undef;
@@ -41,7 +41,7 @@ if ($file == "bookinfo.html")
     print $html;
 }
 
-if ($file == "authors.html")
+if ($file eq "authors.html")
 {
     open my $fh, "< templates/authors.html";
     local $/ = undef;
@@ -50,7 +50,7 @@ if ($file == "authors.html")
     print $html;
 }
 
-if ($file == "books.html")
+if ($file eq "books.html")
 {
     open my $fh, "< templates/books.html";
     local $/ = undef;
