@@ -6,7 +6,8 @@ use vars qw(%in);
 use Data::Dumper;
 use File::Basename qw(dirname);
 use lib dirname(__FILE__);
-use URI;
+use App::Views::MainView;
+
 
 $|=1;
 ReadParse();
@@ -30,29 +31,29 @@ if ($file eq "genres.html")
     my $html = <$fh>;
     close $fh;
     print $html;
-}
-
-if ($file eq "bookinfo.html")
+} elsif ($file eq "bookinfo.html")
 {
     open my $fh, "< templates/bookinfo.html";
     local $/ = undef;
     my $html = <$fh>;
     close $fh;
     print $html;
-}
-
-if ($file eq "authors.html")
+} elsif ($file eq "authors.html")
 {
     open my $fh, "< templates/authors.html";
     local $/ = undef;
     my $html = <$fh>;
     close $fh;
     print $html;
-}
-
-if ($file eq "books.html")
+} elsif ($file eq "books.html")
 {
     open my $fh, "< templates/books.html";
+    local $/ = undef;
+    my $html = <$fh>;
+    close $fh;
+    print $html;
+} else {
+    open my $fh, "< templates/404.html";
     local $/ = undef;
     my $html = <$fh>;
     close $fh;
