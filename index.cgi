@@ -12,6 +12,8 @@ use App::Views::MainView;
 use App::Views::BooksView;
 use App::Views::GenresView;
 use App::Views::AuthorsView;
+use App::Views::BookInfoView;
+use App::Views::Error404View;
 
 
 $|=1;
@@ -35,11 +37,12 @@ if ($file eq "genres.html")
     $genresView->generate();
 } elsif ($file eq "bookinfo.html")
 {
-    open my $fh, "< templates/bookinfo.html";
-    local $/ = undef;
-    my $html = <$fh>;
-    close $fh;
-    print $html;
+    my $bookinfoView = new App::Views::BookInfoView->new();
+     # if ($self->{'query'})
+    # {
+    #     Here will be query
+    # }
+    $bookinfoView->generate();
 } elsif ($file eq "authors.html")
 {
     my $authorsView = new App::Views::AuthorsView->new();
@@ -57,11 +60,8 @@ if ($file eq "genres.html")
     # }
     $booksView->generate();
 } else {
-    open my $fh, "< templates/404.html";
-    local $/ = undef;
-    my $html = <$fh>;
-    close $fh;
-    print $html;
+    my $Error404View = new App::Views::Error404View->new();
+    $Error404View->generate();
 }
 
 print "<pre>";
