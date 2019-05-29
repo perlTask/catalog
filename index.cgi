@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+#created by user6
+
 use CGI qw(:cgi-lib :escapeHTML :unescapeHTML);
 use CGI::Carp qw(fatalsToBrowser);
 use vars qw(%in);
@@ -7,6 +9,9 @@ use Data::Dumper;
 use File::Basename qw(dirname);
 use lib dirname(__FILE__);
 use App::Views::MainView;
+use App::Views::BooksView;
+use App::Views::GenresView;
+use App::Views::AuthorsView;
 
 
 $|=1;
@@ -26,11 +31,8 @@ print $file;
 
 if ($file eq "genres.html")
 {
-    open my $fh, "< templates/genres.html";
-    local $/ = undef;
-    my $html = <$fh>;
-    close $fh;
-    print $html;
+    my $genresView = new App::Views::GenresView->new();
+    $genresView->generate();
 } elsif ($file eq "bookinfo.html")
 {
     open my $fh, "< templates/bookinfo.html";
@@ -40,18 +42,20 @@ if ($file eq "genres.html")
     print $html;
 } elsif ($file eq "authors.html")
 {
-    open my $fh, "< templates/authors.html";
-    local $/ = undef;
-    my $html = <$fh>;
-    close $fh;
-    print $html;
+    my $authorsView = new App::Views::AuthorsView->new();
+    $authorsView->generate();
+} elsif ($file eq "")
+{
+    my $mainView = new App::Views::MainView->new();
+    $mainView->generate();
 } elsif ($file eq "books.html")
 {
-    open my $fh, "< templates/books.html";
-    local $/ = undef;
-    my $html = <$fh>;
-    close $fh;
-    print $html;
+    my $booksView = new App::Views::BooksView->new();
+    # if ($self->{'query'})
+    # {
+    #     Here will be query
+    # }
+    $booksView->generate();
 } else {
     open my $fh, "< templates/404.html";
     local $/ = undef;
@@ -60,39 +64,6 @@ if ($file eq "genres.html")
     print $html;
 }
 
-# if ($file == "")
-# {
-#     open my $fh, "< templates/books.html";
-#     local $/ = undef;
-#     my $html = <$fh>;
-#     close $fh;
-#     print $html;
-# }
-
-
-
-#print $file;
-#print $query;
-
-
-
 print "<pre>";
 print Dumper(\%ENV);
-#print Dumper(@path);
-#print $path[-1];
 print "</pre>";
-
-
-
-# unless (%in)
-# {
-#     open my $fh, "< index.html";
-#     local $/ = undef;
-#     my $html = <$fh>;
-#     close $fh;
-#     print $html;
-# }
-# else
-# {
-#      print Dumper(\%in);
-# }
