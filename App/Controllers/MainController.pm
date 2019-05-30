@@ -6,31 +6,42 @@ package App::Controllers::MainController;
 
 use strict;
 use Data::Dumper;
-# use App::Controllers::BooksController;
+use App::Controllers::BooksController;
+use App::statements;
 # use App::Controllers::AuthorsController;
 # use App::Controllers::GenresController;
 # use App::Controllers::BookInfoController;
+
+my $statements;
 
 sub new
 {
     my $class = ref($_[0]) || $_[0];
     my $self = {};
+    #$self->{'statements'} = new App::statements->new();
+    my $statements = new App::statements->new();
     return bless($self, $class)
 }
 
 sub getBooksController
 {
     my ($self, $query) = @_;
-    # my $books = new App::Controllers::BooksController->new();
+    my $books = new App::Controllers::BooksController->new();
+
     if (!$query)
     {
-        my $allBooks = $books->getAllBooks();
-        return $allBooks;
-    } elsif ($query[0] eq "genre")
-    {
-        my $booksByGenre = $books->getBooksByGenre($query[1]);
-        return $booksByGenre;
-    } elsif
+        my @allBooks = $books->getAllBooks();
+        print "<pre>";
+        print Dumper(@allBooks);
+        print "</pre>";
+        $self->{'statements'}->setData(@allBooks);
+        return $self->{'statements'};
+    }
+    # } elsif ($query[0] eq "genre")
+    # {
+    #     my $booksByGenre = $books->getBooksByGenre($query[1]);
+    #     return $booksByGenre;
+    # } elsif
 
 
 }
