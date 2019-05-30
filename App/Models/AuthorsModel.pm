@@ -20,8 +20,7 @@ sub getAuthors
     }
     # print Dumper(\@DATA);
      $sth->finish();
-    return @DATA;
-    
+    return @DATA;  
 }
 1;
 

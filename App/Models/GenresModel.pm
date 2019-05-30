@@ -20,8 +20,7 @@ sub getGenres
     }
     # print Dumper(\@DATA);
      $sth->finish();
-    return @DATA;
-    
+    return @DATA;   
 }
 1;
 

@@ -22,6 +22,5 @@ sub DESTROY
     my ($self) = @_;
     $self->{'dbh'}->disconnect();
 }
-
 1;
 

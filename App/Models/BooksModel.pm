@@ -57,9 +57,6 @@ sub getBooksByAuthor
     # print Dumper(\@DATA);
     $sth->finish();
     return @DATA;
-
 }
-
-
 1;
 
