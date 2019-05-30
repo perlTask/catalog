@@ -14,6 +14,7 @@ use App::Views::GenresView;
 use App::Views::AuthorsView;
 use App::Views::BookInfoView;
 use App::Views::Error404View;
+use App::Controllers::MainController;
 
 
 $|=1;
@@ -53,12 +54,17 @@ if ($file eq "genres.html")
     $mainView->generate();
 } elsif ($file eq "books.html")
 {
+    my $booksController = new App::Controllers::MainController->new();
+    my $booksStatement = $booksController->getBooksController();
+    print "<pre>";
+    print Dumper($booksStatement->getData());
+    print "</pre>";
     my $booksView = new App::Views::BooksView->new();
     # if ($self->{'query'})
     # {
     #     Here will be query
     # }
-    $booksView->generate();
+    $booksView->generate($booksStatement);
 } else {
     my $Error404View = new App::Views::Error404View->new();
     $Error404View->generate();

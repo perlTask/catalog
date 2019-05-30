@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /~user6/perl/
+RewriteBase /~user6/perl/catalog/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.cgi/$1 [PT]
