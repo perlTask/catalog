@@ -56,7 +56,9 @@ if ($file eq "genres.html")
 {
     my $booksController = new App::Controllers::MainController->new();
     my $booksStatement = $booksController->getBooksController();
-    print Dumper($booksStatement);
+    print "<pre>";
+    print Dumper($booksStatement->getData());
+    print "</pre>";
     my $booksView = new App::Views::BooksView->new();
     # if ($self->{'query'})
     # {

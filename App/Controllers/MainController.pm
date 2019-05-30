@@ -18,8 +18,7 @@ sub new
 {
     my $class = ref($_[0]) || $_[0];
     my $self = {};
-    #$self->{'statements'} = new App::statements->new();
-    my $statements = new App::statements->new();
+    $self->{'statements'} = new App::statements->new();
     return bless($self, $class)
 }
 
@@ -32,9 +31,9 @@ sub getBooksController
     {
         my @allBooks = $books->getAllBooks();
         print "<pre>";
-        print Dumper(@allBooks);
+        #print Dumper(@allBooks);
         print "</pre>";
-        $self->{'statements'}->setData(@allBooks);
+        $self->{'statements'}->setData(\@allBooks);
         return $self->{'statements'};
     }
     # } elsif ($query[0] eq "genre")
