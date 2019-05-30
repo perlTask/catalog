@@ -64,7 +64,7 @@ if ($file eq "genres.html")
     # {
     #     Here will be query
     # }
-    $booksView->generate();
+    $booksView->generate($booksStatement);
 } else {
     my $Error404View = new App::Views::Error404View->new();
     $Error404View->generate();
