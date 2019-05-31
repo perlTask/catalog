@@ -16,25 +16,25 @@ sub new
 sub getAllBooks
 {
     my ($self) = @_;
-    my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->getAllBooks();
-    return @allBooks;
+    my $Model = new App::Models::BooksModel->new();
+    my @arr = $Model->getAllBooks();
+    return @arr;
 }
 
 sub getBooksByGenre
 {
     my ($self, $key) = @_;
-    my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->getBooksByGenre($key);
-    return @allBooks;
+    my $Model = new App::Models::BooksModel->new();
+    my @arr = $Model->getBooksByGenre($key);
+    return @arr;
 }
 
 sub getBooksByAuthor
 {
     my ($self, $key) = @_;
-    my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->getBooksByAuthor($key);
-    return @allBooks;
+    my $Model = new App::Models::BooksModel->new();
+    my @arr = $Model->getBooksByAuthor($key);
+    return @arr;
 }
 
 
