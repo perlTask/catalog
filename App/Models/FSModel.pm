@@ -31,21 +31,19 @@ sub parse
         my $content = <$fh>;
         close $fh;
         $content_html = "";
-        my @arr = $data->getData();
-        #print Dumper(@arr);
+        my @arr = @{$data->getData()};
+        print Dumper(@arr);
         foreach $item (@arr)
         {
-            print Dumper($item);
-            #$content_html .= "<li>" . $item{'title'} . ": " . $item{'description'} . ", cost " . $item{'price'} . "\$</li>";
+            print Dumper(%{$item});
+            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
         }
         $content =~ s/\%BOOKS\%/$content_html/;
-        print $books;
+        #print $books;
         $self->{'staticEls'} =~ s/\%CONTENT\%/$content/;
         return $self->{'staticEls'};
     }
 }
-
-
 
 
 return 1;

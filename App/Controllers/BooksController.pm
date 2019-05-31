@@ -14,9 +14,22 @@ sub new
 sub getAllBooks
 {
     my ($self) = @_;
-    my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->selec();
-    return @allBooks;
+    #my $booksModel = new App::Models::BooksModel->new();
+    #my @allBooks = $booksModel->getAllBooks();
+    #return @allBooks;
+	return $self->getAllBooks();
+}
+
+sub getBooksByGenre
+{
+    my ($self, $id) = @_;
+    return $self->getBooksByGenre($id);
+}
+
+sub getBooksByAuthor
+{
+    my ($self, $id) = @_;
+    return $self->getBooksByAuthor($id);
 }
 
 
