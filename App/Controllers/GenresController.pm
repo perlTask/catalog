@@ -2,9 +2,9 @@
 
 #created by user10
 
-package App::Controllers::BookInfoController;
+package App::Controllers::GenresController;
 
-use App::Models::BookInfoModel;
+use App::Models::GenresModel;
 
 sub new
 {
@@ -13,11 +13,11 @@ sub new
     return bless($self, $class)
 }
 
-sub getBookInfo
+sub getGenres
 {
     my ($self) = @_;
-    my $Model = new App::Models::BookInfoModel->new();
-    my @arr = $Model->getBookInfo();
+    my $Model = new App::Models::GenresModel->new();
+    my @arr = $Model->getGenres();
     return @arr;
 }
 
