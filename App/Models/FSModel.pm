@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 
 #created by user6
+#created by user10
 
 package App::Models::FSModel;
 
@@ -24,25 +25,64 @@ sub parse
     $self->{'staticEls'} = <$fh>;
     close $fh;
 
-    if ($filename)
+    open my $fh, "< " . $filename;
+    local $/ = undef;
+    my $content = <$fh>;
+    close $fh;
+    $content_html = "";
+
+    my @arr;
+    if (defined $data)
     {
-        open my $fh, "< " . $filename;
-        local $/ = undef;
-        my $content = <$fh>;
-        close $fh;
-        $content_html = "";
-        my @arr = @{$data->getData()};
+        @arr = @{$data->getData()};
         print Dumper(@arr);
+    }else
+    {
+        $filename = "404.html";
+    }
+
+    if ($filename as "books.html")
+    {
         foreach $item (@arr)
         {
             print Dumper(%{$item});
             #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
         }
+    }elsif ($filename as "authors.html")
+    {
+        foreach $item (@arr)
+        {
+            print Dumper(%{$item});
+            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+        }        
+    }
+    elsif ($filename as "genres.html")
+    {
+        foreach $item (@arr)
+        {
+            print Dumper(%{$item});
+            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+        }        
+    }
+    elsif ($filename as "bookinfo.html")
+    {
+        foreach $item (@arr)
+        {
+            print Dumper(%{$item});
+            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+        }        
+    }
+    else
+    {
         $content =~ s/\%BOOKS\%/$content_html/;
         #print $books;
         $self->{'staticEls'} =~ s/\%CONTENT\%/$content/;
         return $self->{'staticEls'};
     }
+    $content =~ s/\%BOOKS\%/$content_html/;
+    #print $books;
+    $self->{'staticEls'} =~ s/\%CONTENT\%/$content/;
+    return $self->{'staticEls'};
 }
 
 
