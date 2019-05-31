@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+#created by user10
+
 package App::Controllers::BooksController;
 
 use App::Models::BooksModel;
@@ -21,17 +23,17 @@ sub getAllBooks
 
 sub getBooksByGenre
 {
-    my ($self) = @_;
+    my ($self, $key) = @_;
     my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->getBooksByGenre();
+    my @allBooks = $booksModel->getBooksByGenre($key);
     return @allBooks;
 }
 
 sub getBooksByAuthor
 {
-    my ($self) = @_;
+    my ($self, $key) = @_;
     my $booksModel = new App::Models::BooksModel->new();
-    my @allBooks = $booksModel->getBooksByAuthor();
+    my @allBooks = $booksModel->getBooksByAuthor($key);
     return @allBooks;
 }
 
