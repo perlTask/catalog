@@ -2,7 +2,7 @@
 
 package App::Controllers::BooksController;
 
-use App::Models::BooksModel;
+@ISA=qw(App::Models::BooksModel);
 
 sub new
 {
