@@ -8,8 +8,8 @@ use strict;
 use Data::Dumper;
 use App::Controllers::BooksController;
 use App::statements;
-# use App::Controllers::AuthorsController;
-# use App::Controllers::GenresController;
+use App::Controllers::GenresController;
+use App::Controllers::AuthorsController;
 # use App::Controllers::BookInfoController;
 
 my $statements;
@@ -24,27 +24,54 @@ sub new
 
 sub getBooksController
 {
-    my ($self, $query) = @_;
+    my ($self, $query, $id) = @_;
     my $books = new App::Controllers::BooksController->new();
 
     if (!$query)
     {
         my @allBooks = $books->getAllBooks();
-        print "<pre>";
-        #print Dumper(@allBooks);
-        print "</pre>";
+        # print "<pre>";
+        # print Dumper(@allBooks);
+        # print "</pre>";
         $self->{'statements'}->setData(\@allBooks);
+        #print $self->{'statements'}->getData();
+        return $self->{'statements'};
+    } elsif ($query eq "author")
+    {
+        my @booksByAuthor = $books->getBooksByAuthor($id);
+        # print "<pre>";
+        # print Dumper(@booksByAuthor);
+        # print "</pre>";
+        $self->{'statements'}->setData(\@booksByAuthor);
+        return $self->{'statements'};
+    }elsif ($query eq "genre")
+    {
+        my @booksByGenres = $books->getBooksByGenre($id);
+        # print "<pre>";
+        # print Dumper(@booksByAuthor);
+        # print "</pre>";
+        $self->{'statements'}->setData(\@booksByGenres);
         return $self->{'statements'};
     }
-    # } elsif ($query[0] eq "genre")
-    # {
-    #     my $booksByGenre = $books->getBooksByGenre($query[1]);
-    #     return $booksByGenre;
-    # } elsif
-
-
 }
 
+sub getGenresController
+{
+    my ($self, $query, $id) = @_;
+    my $genresController = new App::Controllers::GenresController->new();
+    my @genres = $genresController->getGenres();
+    $self->{'statements'}->setData(\@genres);
+    return $self->{'statements'};
+}
+
+sub getAuthorsController
+{
+    my ($self, $query, $id) = @_;
+    my $authorsController = new App::Controllers::AuthorsController->new();
+    my @authors = $authorsController->getAuthors();
+    $self->{'statements'}->setData(\@authors);
+    return $self->{'statements'};
+}
 
 
 return 1;
