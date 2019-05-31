@@ -2,7 +2,7 @@
 
 package App::Controllers::BooksController;
 
-@ISA=qw(App::Models::BooksModel);
+use App::Models::BooksModel;
 
 sub new
 {
@@ -14,22 +14,25 @@ sub new
 sub getAllBooks
 {
     my ($self) = @_;
-    #my $booksModel = new App::Models::BooksModel->new();
-    #my @allBooks = $booksModel->getAllBooks();
-    #return @allBooks;
-	return $self->getAllBooks();
+    my $booksModel = new App::Models::BooksModel->new();
+    my @allBooks = $booksModel->getAllBooks();
+    return @allBooks;
 }
 
 sub getBooksByGenre
 {
-    my ($self, $id) = @_;
-    return $self->getBooksByGenre($id);
+    my ($self) = @_;
+    my $booksModel = new App::Models::BooksModel->new();
+    my @allBooks = $booksModel->getBooksByGenre();
+    return @allBooks;
 }
 
 sub getBooksByAuthor
 {
-    my ($self, $id) = @_;
-    return $self->getBooksByAuthor($id);
+    my ($self) = @_;
+    my $booksModel = new App::Models::BooksModel->new();
+    my @allBooks = $booksModel->getBooksByAuthor();
+    return @allBooks;
 }
 
 
