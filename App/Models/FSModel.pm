@@ -34,6 +34,7 @@ sub parse
     my @arr;
     if (defined $data)
     {
+<<<<<<< HEAD
         @arr = @{$data->getData()};
         print Dumper(@arr);
     }else
@@ -43,10 +44,21 @@ sub parse
 
     if ($filename as "books.html")
     {
+=======
+        open my $fh, "< " . $filename;
+        local $/ = undef;
+        my $content = <$fh>;
+        close $fh;
+        $content_html = "";
+        my @arr = @{$data->getData()};
+        # print Dumper(@arr);
+>>>>>>> a202aa055b5c8ed9318df469c114750d12d73c1a
         foreach $item (@arr)
         {
-            print Dumper(%{$item});
-            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+            # print "<pre>";
+            # print Dumper(%{$item});
+            # print "</pre>";
+            $content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
         }
     }elsif ($filename as "authors.html")
     {
