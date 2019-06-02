@@ -16,7 +16,7 @@ sub getBookInfo
         JOIN genres g ON (bg.genreID=g.id)
         JOIN books_authors ba ON (ba.bookID=b.id)
         JOIN authors a ON (ba.authorID=a.id)
-        WHERE (b.id='.$id.')' );
+        WHERE b.id='.$id.'' );
     $sth->execute();
     my @DATA = ();
     while(my $row=$sth->fetchrow_hashref())

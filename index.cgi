@@ -41,12 +41,10 @@ if ($file eq "genres.html")
     $genresView->generate($genresStatement);
 } elsif ($file eq "bookinfo.html" and $in{'id'} and looks_like_number($in{'id'}))
 {
+    my $bookInfoController = new App::Controllers::MainController->new();
     my $bookinfoView = new App::Views::BookInfoView->new();
-     # if ($self->{'query'})
-    # {
-    #     Here will be query
-    # }
-    $bookinfoView->generate();
+    my $infoStatement = $bookInfoController->getBookInfoController($in{'id'});
+    $bookinfoView->generate($infoStatement);
 } elsif ($file eq "authors.html")
 {
     my $authorsController = new App::Controllers::MainController->new();

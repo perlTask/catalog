@@ -19,9 +19,9 @@ sub new
 
 sub generate
 {
-    my ($self) = @_;
+    my ($self, $data) = @_;
     my $file = new App::Models::FSModel->new();
-    $self->{'html'} = $file->parse('templates/bookinfo.html');
+    $self->{'html'} = $file->parse('templates/bookinfo.html', $data);
     print $self->{'html'};
 }
 

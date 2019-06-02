@@ -10,7 +10,7 @@ use App::Controllers::BooksController;
 use App::statements;
 use App::Controllers::GenresController;
 use App::Controllers::AuthorsController;
-# use App::Controllers::BookInfoController;
+use App::Controllers::BookInfoController;
 
 my $statements;
 
@@ -73,5 +73,13 @@ sub getAuthorsController
     return $self->{'statements'};
 }
 
+sub getBookInfoController
+{
+    my ($self, $id) = @_;
+    my $bookInfoController = new App::Controllers::BookInfoController->new();
+    my @info = $bookInfoController->getBookInfo($id);
+    $self->{'statements'}->setData(\@info);
+    return $self->{'statements'};
+}
 
 return 1;

@@ -1,6 +1,5 @@
 #!/usr/bin/perl -w
 
-#created by user6
 #created by user10
 
 package App::Models::FSModel;
@@ -34,65 +33,74 @@ sub parse
     my @arr;
     if (defined $data)
     {
-<<<<<<< HEAD
         @arr = @{$data->getData()};
-        print Dumper(@arr);
+        #print Dumper(@arr);
     }else
     {
         $filename = "404.html";
     }
 
-    if ($filename as "books.html")
+    if ($filename eq "templates/books.html")
     {
-=======
-        open my $fh, "< " . $filename;
-        local $/ = undef;
-        my $content = <$fh>;
-        close $fh;
-        $content_html = "";
-        my @arr = @{$data->getData()};
-        # print Dumper(@arr);
->>>>>>> a202aa055b5c8ed9318df469c114750d12d73c1a
         foreach $item (@arr)
         {
-            # print "<pre>";
-            # print Dumper(%{$item});
-            # print "</pre>";
-            $content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+            $content_html .= '<article>
+                                <h2>Title: '.$item->{'title'}. '</h2>
+                                <div class="article-desc">
+                                    <p>Price:'.$item->{'price'}.'</p>
+                                </div>
+                                <div class="text-right">
+                                    <a href="bookinfo.html?id='.$item->{'id'}.'" class="button btn-red">Read more</a>
+                                </div>
+                            </article>';
         }
-    }elsif ($filename as "authors.html")
+    }elsif ($filename eq "templates/authors.html")
     {
         foreach $item (@arr)
         {
-            print Dumper(%{$item});
-            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+            $content_html .= '<article>
+                                <h3>'.$item->{'author'}. '</h3>
+                                <div class="text-right">
+                                    <a href="books.html?author='.$item->{'id'}.'" class="button btn-red">author`s books</a>
+                                </div>
+                            </article>';
         }        
     }
-    elsif ($filename as "genres.html")
+    elsif ($filename eq "templates/genres.html")
     {
         foreach $item (@arr)
         {
-            print Dumper(%{$item});
-            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+            $content_html .= '<article>
+                                <h3>'.$item->{'genre'}. '</h3>
+                                <div class="text-right">
+                                    <a href="books.html?genre='.$item->{'id'}.'" class="button btn-red">genre`s books</a>
+                                </div>
+                            </article>';
         }        
     }
-    elsif ($filename as "bookinfo.html")
+    elsif ($filename eq "templates/bookinfo.html")
     {
         foreach $item (@arr)
         {
-            print Dumper(%{$item});
-            #$content_html .= "<li>" . $item->{'title'} . ": " . $item->{'description'} . ", cost " . $item->{'price'} . "\$</li>";
+            $content_html .= '<article>
+                                <h2>Book name</h2>
+                                <div class="article-desc">
+                                    <p>Author:'.$item->{'author'}.'</p>
+                                    <p>Genre:'.$item->{'genre'}.'</p>
+                                    <p>Description:'.$item->{'description'}.'</p>
+                                    <p>Price:'.$item->{'price'}.'</p>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#" class="button btn-red">BUY</a>
+                                </div>
+                            </article>';
         }        
     }
     else
     {
-        $content =~ s/\%BOOKS\%/$content_html/;
-        #print $books;
-        $self->{'staticEls'} =~ s/\%CONTENT\%/$content/;
-        return $self->{'staticEls'};
+        $content_html = "Content not found!";
     }
-    $content =~ s/\%BOOKS\%/$content_html/;
-    #print $books;
+    $content =~ s/\%LIST_TEMPL\%/$content_html/;
     $self->{'staticEls'} =~ s/\%CONTENT\%/$content/;
     return $self->{'staticEls'};
 }

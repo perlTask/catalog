@@ -15,9 +15,9 @@ sub new
 
 sub getBookInfo
 {
-    my ($self) = @_;
+    my ($self, $id) = @_;
     my $Model = new App::Models::BookInfoModel->new();
-    my @arr = $Model->getBookInfo();
+    my @arr = $Model->getBookInfo($id);
     return @arr;
 }
 
