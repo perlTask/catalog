@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+#created by user10
+
 package App::statements;
 
 use strict;
@@ -23,7 +25,6 @@ sub setData
   #2. ref
   #my ($self) = $_[0];
   #$self->{'data'} = $_[1];
-  #printf "reftype 2:%s\n", $self->{'data'};
 }
 
 sub getData

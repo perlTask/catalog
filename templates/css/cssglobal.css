@@ -1,0 +1,269 @@
+ /*
+	* {
+	 margin: 0;
+	 padding: 0;
+	}
+	reset.css
+	normalize.css
+ 
+ */
+*{ 
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+body {
+	font: 400 14px/1.2 Arial, Helvetica, sans-serif;
+	background: #6dc5dd;
+	padding: 20px 0;
+}
+a {
+	text-decoration: none;
+}
+h1 {
+	font-size: 30px;
+	font-weight: 600;
+	padding-bottom: 10px;
+	text-align: center;
+}
+h2 {
+	font-size: 20px;
+	font-weight: 600;
+	padding-bottom: 10px;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.global-wrap {
+	background: #fff;
+    max-width: 1015px;
+    margin: 0 auto;
+    min-height: calc(100vh - 40px);
+}
+.global-main{
+	min-height: calc(100vh - 120px);
+}
+.logo {
+	font-size: 20px;
+	font-weight: 600;
+	color: #fff;
+}
+.global-header {
+	padding: 10px 20px;
+	background: #207f99;
+}
+.global-nav {
+	float: right;
+	padding-top: 4px;
+}
+.global-nav li {
+	float: left;
+	padding-right: 10px;
+	border-right: 1px solid #fff;
+}
+.global-nav ul li:last-child {
+	padding-right: 0;
+	border-right: 0;
+}
+.global-nav li a {
+	color: #fff;
+}
+.global-nav li a:hover {
+	text-decoration: underline;
+}
+.global-footer {
+	padding: 10px 20px;
+	background: #207f99;
+	left: 0; bottom: 0; 
+    padding: 10px; 
+    background: #207f99;
+    color: #6dc5dd;
+    text-align: center;
+}
+
+.content-padding {
+	padding: 15px 20px;
+	/*
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	*/
+}
+.page-tile {
+	width: 100%;
+}
+.sidebar-panel {
+	background: #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.sidebar-panel h4 {
+	font-size: 20px;
+	font-weight: 600;
+	font-style: italic;
+	border-bottom: 1px solid #000;
+}
+.panel-body {
+	padding-top: 10px;
+}
+.panel-list li {
+    list-style: square;
+    margin-left: 20px;
+}
+.panel-links a {
+	display: block;
+	border-top: 1px solid #000;
+	padding: 5px 0 4px 0;
+}
+.panel-links li:first-child a {
+	border-top: 0;
+}
+.article-list p {
+	margin-bottom: 16.8px;
+}
+.articles article {
+	border: 1px solid #ccc;
+	padding: 15px 20px;
+	margin-bottom: 20px;
+}
+.button {
+	padding: 10px 15px 5px 15px;
+	color: #fff;
+	display: inline-block;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+}
+.button.btn-red {
+	border-bottom-color: #207f99;
+	background: #6dc5dd;
+}
+ 
+.three-columns {
+	background: #6dc5dd;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	color: #fff;
+}
+.icon-in-column {
+	background: url('../img/col_pic_slider.png') no-repeat 0px 0px;
+	width: 63px;
+	height: 63px;
+}
+.icon-in-column.icon-2 {
+	background-position: -63px 0;
+}
+.icon-in-column.icon-3 {
+	background-position: -126px 0;
+}
+/*
+position: static;
+position: absolute;
+position: relative;
+position: fixed;
+*/
+
+.popup-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0, .3);
+}
+.popup-wrap .popup-window {
+	background: #fff;
+	position: absolute;
+	width: 400px;
+	left: 50%;
+	top: 50%;
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	padding: 30px;
+}
+.popup-wrap .popup-window h2 {
+	font-size: 30px;
+}
+.popup-window-close {
+	background: transparent;
+	border: none;
+	position: absolute;
+	right: 10px;
+    top: 10px;
+	font-size: 50px;
+	cursor: pointer;
+    color: red;
+    font-size: 30px;
+}
+
+/* 
+
+start 320 > 360
+
+0 to 767
+768 to 991
+992 to 1199
+1200 to >
+*/
+
+
+@media screen and (max-width: 767px) {
+	.three-columns .one-box {
+		text-align: center;
+	}
+	.icon-in-column {
+		margin: 0 auto;
+	}
+	.global-nav li {
+		margin-right: 15px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.sidebar {
+		float: left;
+		width: 10%;
+		padding-right: 20px;
+		/*
+			width: 28%;
+			padding-right: 2%;
+		*/
+	}
+	/*.sidebar-panel {
+		margin-right: 20px;
+	}*/
+	.article-list {
+		float: right;
+		width: 90%;
+	}
+	.three-columns > div {
+		float: left;
+		width: 33.3333%;
+	}
+	.icon-in-column {
+		position: absolute;
+		top: 0;
+		left: 15px;
+	}
+	.three-columns .one-box {
+		padding-left: 93px;
+		position: relative;
+		min-height: 63px;
+	}
+	.global-nav li {
+		padding-left: 15px;
+	}
+}

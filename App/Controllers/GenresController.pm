@@ -2,7 +2,7 @@
 
 #created by user10
 
-package App::Controllers::GernesController;
+package App::Controllers::GenresController;
 
 use App::Models::GenresModel;
 
