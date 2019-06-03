@@ -47,6 +47,7 @@ sub parse
             $content_html .= '<article>
                                 <h2>Title: '.$item->{'title'}. '</h2>
                                 <div class="article-desc">
+                                    <p>Description:'.$item->{'description'}.'</p>
                                     <p>Price:'.$item->{'price'}.'</p>
                                 </div>
                                 <div class="text-right">
