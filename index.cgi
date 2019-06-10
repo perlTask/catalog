@@ -31,7 +31,7 @@ my @file_arr = split('\?', $file_example);
 my $file = $file_arr[0];
 #my $query = $file_arr[1];
 
-print $file;
+# print $file;
 
 if ($file eq "genres.html")
 {
@@ -84,6 +84,6 @@ if ($file eq "genres.html")
     $Error404View->generate();
 }
 
-print "<pre>";
-print Dumper(\%ENV);
-print "</pre>";
+# print "<pre>";
+# print Dumper(\%ENV);
+# print "</pre>";

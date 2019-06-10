@@ -42,18 +42,23 @@ sub parse
 
     if ($filename eq "templates/books.html")
     {
-        foreach $item (@arr)
+        if(@arr)
         {
-            $content_html .= '<article>
-                                <h2>Title: '.$item->{'title'}. '</h2>
-                                <div class="article-desc">
-                                    <p>Description:'.$item->{'description'}.'</p>
-                                    <p>Price:'.$item->{'price'}.'</p>
-                                </div>
-                                <div class="text-right">
-                                    <a href="bookinfo.html?id='.$item->{'id'}.'" class="button btn-red">Read more</a>
-                                </div>
-                            </article>';
+            foreach $item (@arr)
+            {
+                $content_html .= '<article>
+                                    <h2>Title: '.$item->{'title'}. '</h2>
+                                    <div class="article-desc">
+                                        <p>Description:'.$item->{'description'}.'</p>
+                                        <p>Price:'.$item->{'price'}.'</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <a href="bookinfo.html?id='.$item->{'id'}.'" class="button btn-red">Read more</a>
+                                    </div>
+                                </article>';
+            }
+        } else {
+            $content_html = 'No books in catalogue. Please, try again.';
         }
     }elsif ($filename eq "templates/authors.html")
     {
@@ -81,21 +86,26 @@ sub parse
     }
     elsif ($filename eq "templates/bookinfo.html")
     {
-        foreach $item (@arr)
+        if(@arr)
         {
-            $content_html .= '<article>
-                                <h2>Book name</h2>
-                                <div class="article-desc">
-                                    <p>Author:'.$item->{'author'}.'</p>
-                                    <p>Genre:'.$item->{'genre'}.'</p>
-                                    <p>Description:'.$item->{'description'}.'</p>
-                                    <p>Price:'.$item->{'price'}.'</p>
-                                </div>
-                                <div class="text-right">
-                                    <a href="#" class="button btn-red">BUY</a>
-                                </div>
-                            </article>';
-        }        
+            foreach $item (@arr)
+            {
+                $content_html .= '<article>
+                                    <h2>Book name</h2>
+                                    <div class="article-desc">
+                                        <p>Author:'.$item->{'author'}.'</p>
+                                        <p>Genre:'.$item->{'genre'}.'</p>
+                                        <p>Description:'.$item->{'description'}.'</p>
+                                        <p>Price:'.$item->{'price'}.'</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <a href="#" class="button btn-red">BUY</a>
+                                    </div>
+                                </article>';
+            }        
+        } else {
+            $content_html = "Can't find book. Please try again.";
+        }
     }
     else
     {
